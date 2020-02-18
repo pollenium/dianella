@@ -8,5 +8,7 @@ var Writer_1 = require("./classes/Daish/Writer");
 exports.DaishWriter = Writer_1.DaishWriter;
 var Deployer_1 = require("./classes/Daish/Deployer");
 exports.DaishDeployer = Deployer_1.DaishDeployer;
+var genPermitHash_1 = require("./utils/genPermitHash");
+exports.genPermitHash = genPermitHash_1.genPermitHash;
 var genPermitStruct_1 = require("./utils/genPermitStruct");
 exports.genPermitStruct = genPermitStruct_1.genPermitStruct;
