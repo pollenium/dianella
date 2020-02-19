@@ -62,7 +62,7 @@ test('deploy daish', function () { return __awaiter(void 0, void 0, void 0, func
         }
     });
 }); });
-test('alice balance should be totalSupply', function () { return __awaiter(void 0, void 0, void 0, function () {
+test('user balance should be totalSupply', function () { return __awaiter(void 0, void 0, void 0, function () {
     var balance;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -74,7 +74,19 @@ test('alice balance should be totalSupply', function () { return __awaiter(void 
         }
     });
 }); });
-test('alice should permit custodian (via bridger)', function () { return __awaiter(void 0, void 0, void 0, function () {
+test('user nonce should be 0', function () { return __awaiter(void 0, void 0, void 0, function () {
+    var nonce;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, daishReader.fetchNonce(keypairs_1.keypairs.user.getAddress())];
+            case 1:
+                nonce = _a.sent();
+                expect(nonce.toNumber()).toBe(0);
+                return [2 /*return*/];
+        }
+    });
+}); });
+test('user should permit custodian (via bridger)', function () { return __awaiter(void 0, void 0, void 0, function () {
     var permitStruct, daishWriter;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -91,6 +103,18 @@ test('alice should permit custodian (via bridger)', function () { return __await
                 return [4 /*yield*/, daishWriter.permit(permitStruct)];
             case 1:
                 _a.sent();
+                return [2 /*return*/];
+        }
+    });
+}); });
+test('user nonce should be 1', function () { return __awaiter(void 0, void 0, void 0, function () {
+    var nonce;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, daishReader.fetchNonce(keypairs_1.keypairs.user.getAddress())];
+            case 1:
+                nonce = _a.sent();
+                expect(nonce.toNumber()).toBe(1);
                 return [2 /*return*/];
         }
     });

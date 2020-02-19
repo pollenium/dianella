@@ -21,12 +21,17 @@ test('deploy daish', async () => {
   })
 })
 
-test('alice balance should be totalSupply', async () => {
+test('user balance should be totalSupply', async () => {
   const balance = await daishReader.fetchBalance(keypairs.user.getAddress())
   expect(balance.toNumber()).toBe(totalSupply)
 })
 
-test('alice should permit custodian (via bridger)', async () => {
+test('user nonce should be 0', async () => {
+  const nonce = await daishReader.fetchNonce(keypairs.user.getAddress())
+  expect(nonce.toNumber()).toBe(0)
+})
+
+test('user should permit custodian (via bridger)', async () => {
   const permitStruct = genPermitStruct({
     holderPrivateKey: keypairs.user.privateKey,
     spender: keypairs.custodian.getAddress(),
@@ -38,6 +43,12 @@ test('alice should permit custodian (via bridger)', async () => {
   })
   await daishWriter.permit(permitStruct)
 })
+
+test('user nonce should be 1', async () => {
+  const nonce = await daishReader.fetchNonce(keypairs.user.getAddress())
+  expect(nonce.toNumber()).toBe(1)
+})
+
 
 test('custodian allowance should be UINT256_MAX', async () => {
   const allowance = await daishReader.fetchAllowance({
