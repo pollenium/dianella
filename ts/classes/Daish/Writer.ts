@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 import { Address, Uint256, Bytes32, Uint8, Uintable } from 'pollenium-buttercup'
 import { Uu, Uish } from 'pollenium-uvaursi'
-import { ContractWriterChildStruct } from 'pollenium-clover'
+import { ContractWriterChildStruct, StateChange } from 'pollenium-clover'
 import { TokenWriter } from 'pollenium-toadflax'
 import { daish } from '../../'
 import { UINT256_MAX } from '../../consts'
@@ -25,16 +25,18 @@ export class DaishWriter extends TokenWriter {
     })
   }
 
-  async permit(struct: PermitStruct): Promise<void> {
-    await this.ethersContract.permit(
-      Uu.wrap(struct.holder).toPhex(),
-      Uu.wrap(struct.spender).toPhex(),
-      new Uint256(struct.nonce).uu.toPhex(),
-      UINT256_MAX.uu.toPhex(),
-      '0x01',
-      new Uint8(struct.signature.v).uu.toPhex(),
-      Uu.wrap(struct.signature.r).toPhex(),
-      Uu.wrap(struct.signature.s).toPhex()
+  async permit(struct: PermitStruct): Promise<StateChange> {
+    return this.genStateChange(
+      this.ethersContract.permit(
+        Uu.wrap(struct.holder).toPhex(),
+        Uu.wrap(struct.spender).toPhex(),
+        new Uint256(struct.nonce).uu.toPhex(),
+        UINT256_MAX.uu.toPhex(),
+        '0x01',
+        new Uint8(struct.signature.v).uu.toPhex(),
+        Uu.wrap(struct.signature.r).toPhex(),
+        Uu.wrap(struct.signature.s).toPhex()
+      )
     )
   }
 

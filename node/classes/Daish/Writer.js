@@ -73,12 +73,7 @@ var DaishWriter = /** @class */ (function (_super) {
     DaishWriter.prototype.permit = function (struct) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.ethersContract.permit(pollenium_uvaursi_1.Uu.wrap(struct.holder).toPhex(), pollenium_uvaursi_1.Uu.wrap(struct.spender).toPhex(), new pollenium_buttercup_1.Uint256(struct.nonce).uu.toPhex(), consts_1.UINT256_MAX.uu.toPhex(), '0x01', new pollenium_buttercup_1.Uint8(struct.signature.v).uu.toPhex(), pollenium_uvaursi_1.Uu.wrap(struct.signature.r).toPhex(), pollenium_uvaursi_1.Uu.wrap(struct.signature.s).toPhex())];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
+                return [2 /*return*/, this.genStateChange(this.ethersContract.permit(pollenium_uvaursi_1.Uu.wrap(struct.holder).toPhex(), pollenium_uvaursi_1.Uu.wrap(struct.spender).toPhex(), new pollenium_buttercup_1.Uint256(struct.nonce).uu.toPhex(), consts_1.UINT256_MAX.uu.toPhex(), '0x01', new pollenium_buttercup_1.Uint8(struct.signature.v).uu.toPhex(), pollenium_uvaursi_1.Uu.wrap(struct.signature.r).toPhex(), pollenium_uvaursi_1.Uu.wrap(struct.signature.s).toPhex()))];
             });
         });
     };

@@ -4,7 +4,7 @@
   "description": "",
   "main": "node/index.js",
   "scripts": {
-    "jest": "jest",
+    "test": "jest",
     "succory": "succory",
     "tsc": "tsc"
   },
@@ -31,10 +31,11 @@
   "dependencies": {
     "ethereumjs-abi": "^0.6.8",
     "ethers": "^4.0.44",
-    "pollenium-buttercup": "^19.2.0",
-    "pollenium-clover": "^6.1.2",
+    "pollenium-buttercup": "^19.6.1",
+    "pollenium-clover": "^7.0.0",
     "pollenium-ilex": "^9.2.0",
-    "pollenium-toadflax": "^2.1.0",
+    "pollenium-toadflax": "^2.3.0",
+    "pollenium-uvaursi": "^8.11.0",
     "web3-utils": "^1.2.6"
   }
 }
